@@ -1,1 +1,1 @@
-export * from './number'
+export { default as Cursor } from './cursor'
