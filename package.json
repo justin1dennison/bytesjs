@@ -14,7 +14,7 @@
     "dev": "parcel watch src/lib.js",
     "prebuild": "npm run clean",
     "build": "parcel build src/lib.js",
-    "lint": "eslint --ignore-path .gitignore --fix ."
+    "lint": "eslint --ignore-path .gitignore --fix src/**/*.js"
   },
   "keywords": [],
   "author": "",
