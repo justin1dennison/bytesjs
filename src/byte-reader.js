@@ -37,7 +37,7 @@ class ByteReader extends Cursor {
    * @param {*} length
    */
   read(length) {
-    const data = this.buf.slice(0, length)
+    const data = this.buf.slice(this.position, this.position + length)
     this.forward(length)
     return data
   }
