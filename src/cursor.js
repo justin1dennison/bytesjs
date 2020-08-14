@@ -76,7 +76,7 @@ class Cursor {
    * @returns {boolean}
    */
   done() {
-    return this.position >= this.buf.length
+    return this.position >= this.buf.length - 1
   }
 }
 
