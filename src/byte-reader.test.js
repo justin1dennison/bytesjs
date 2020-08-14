@@ -148,3 +148,14 @@ test("can read little-endian double", (t) => {
   t.is(sample, 5e-323)
   t.is(reader.position, 8)
 })
+
+test("can read an int8array", (t) => {
+  const reader = new ByteReader(
+    Buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
+    Endian.BIG
+  )
+  const actual = reader.int8Array({ length: 5 })
+  const expected = Int8Array.from([1, 2, 3, 4, 5])
+  t.deepEqual(actual, expected)
+  t.is(reader.position, 5)
+})

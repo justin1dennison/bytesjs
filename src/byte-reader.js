@@ -103,9 +103,9 @@ class ByteReader extends Cursor {
       return chunk.readUInt32LE()
     }
   }
-  
+
   /**
-   * 
+   *
    */
   int64() {
     const chunk = this.read(8)
@@ -150,6 +150,11 @@ class ByteReader extends Cursor {
     } else {
       return chunk.readDoubleLE()
     }
+  }
+
+  int8Array({ length }) {
+    const chunk = this.read(length)
+    return Int8Array.from(chunk)
   }
 
   static of(buf) {

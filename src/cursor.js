@@ -39,8 +39,7 @@ class Cursor {
       throw CursorError.InvalidPosition
     if (
       from === SeekFrom.RELATIVE &&
-        (this.position + offset > this.buf.length ||
-      this.position + offset < 0)
+      (this.position + offset > this.buf.length || this.position + offset < 0)
     )
       throw CursorError.InvalidPosition
 
