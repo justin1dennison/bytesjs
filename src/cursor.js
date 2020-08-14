@@ -70,6 +70,14 @@ class Cursor {
   rewind(amount) {
     this.forward(-amount)
   }
+
+  /**
+   *
+   * @returns {boolean}
+   */
+  done() {
+    return this.position >= this.buf.length
+  }
 }
 
 export default Cursor

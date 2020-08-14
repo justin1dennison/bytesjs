@@ -64,3 +64,10 @@ test("a cursor can be moved forward", (t) => {
   cursor.forward(2)
   t.is(cursor.position, 3, "cursor is at position 3")
 })
+
+test("a cursor can determine if you are `done`", (t) => {
+  const cursor = new Cursor(Buffer.from("abc"))
+  t.is(cursor.done(), false, "cursor is not at the end")
+  cursor.seek(3)
+  t.is(cursor.done(), true, "cursor is complete")
+})
