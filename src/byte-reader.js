@@ -42,66 +42,76 @@ class ByteReader extends Cursor {
     return data
   }
 
+  int(length) {
+    const position = this.position
+    this.forward(length)
+    return this.endian === Endian.BIG
+      ? this.buf.readIntBE(position, length)
+      : this.buf.readIntLE(position, length)
+  }
+
+  uint(length) {
+    const position = this.position
+    this.forward(length)
+    return this.endian === Endian.BIG
+      ? this.buf.readUIntBE(position, length)
+      : this.buf.readUIntLE(position, length)
+  }
+
   /**
    *
    */
   int8() {
-    return this.read(1).readInt8()
+    return this.int(1)
   }
 
   /**
    *
    */
   uint8() {
-    return this.read(1).readUInt8()
+    return this.uint(1)
   }
 
   /**
    *
    */
   int16() {
-    const chunk = this.read(2)
-    if (this.endian === Endian.BIG) {
-      return chunk.readInt16BE()
-    } else {
-      return chunk.readInt16LE()
-    }
+    return this.int(2)
   }
 
   /**
    *
    */
   uint16() {
-    const chunk = this.read(2)
-    if (this.endian === Endian.BIG) {
-      return chunk.readUInt16BE()
-    } else {
-      return chunk.readUInt16LE()
-    }
+    return this.uint(2)
+  }
+
+  /**
+   *
+   */
+  int24() {
+    return this.int(3)
+  }
+
+  /**
+   *
+   */
+  uint24() {
+    return this.uint(3)
   }
 
   /**
    *
    */
   int32() {
-    const chunk = this.read(4)
-    if (this.endian === Endian.BIG) {
-      return chunk.readInt32BE()
-    } else {
-      return chunk.readInt32LE()
-    }
+    return this.int(4)
   }
 
   /**
    *
    */
   uint32() {
-    const chunk = this.read(4)
-    if (this.endian === Endian.BIG) {
-      return chunk.readUInt32BE()
-    } else {
-      return chunk.readUInt32LE()
-    }
+    return this.uint(4)
   }
 
   /**
